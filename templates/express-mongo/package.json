@@ -1,0 +1,51 @@
+{
+  "name": "base-app",
+  "version": "1.0.0",
+  "description": "A base web app template for production with express.js and mongodb following airbnb js style guide.",
+  "engines": {
+    "node": "8.9.4"
+  },
+  "main": "server.js",
+  "scripts": {
+    "lint": "node_modules/.bin/eslint src",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "test": "mocha",
+    "test-coverage": "nyc --reporter=text --reporter=html mocha --timeout=3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsuarezlogans/node-base-app.git"
+  },
+  "keywords": [
+    "Express",
+    "MongoDb",
+    "Production",
+    "Airbnb"
+  ],
+  "author": "Danny Suarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsuarezlogans/node-base-app/issues"
+  },
+  "homepage": "https://github.com/dsuarezlogans/node-base-app#readme",
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "mongoose": "5.0.17",
+    "morgan": "1.9.0",
+    "winston": "2.4.2"
+  },
+  "devDependencies": {
+    "chai": "4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "mocha": "5.1.1",
+    "nodemon": "1.17.4",
+    "nyc": "11.7.2",
+    "supertest": "3.0.0"
+  }
+}
