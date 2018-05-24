@@ -1,4 +1,5 @@
 module.exports = {
+  app: 'base-app',
   env: 'production',
   session: {
     key: 'the.express.session.id',

@@ -27,30 +27,35 @@ inquirer.prompt(QUESTIONS)
     const projectChoice = answers['base-project-choice'];
     const projectName = answers['project-name'];
     const templatePath = `${__dirname}/templates/${projectChoice}`;
-  debugger;
+
     fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
-    createDirectoryContents(templatePath, projectName);
+    createDirectoryContents(templatePath, projectName, projectName);
   });
 
-function createDirectoryContents (templatePath, newProjectPath) {
+function createDirectoryContents (templatePath, newProjectPath, projectName) {
   const filesToCreate = fs.readdirSync(templatePath);
   filesToCreate.forEach(file => {
     const origFilePath = `${templatePath}/${file}`;
-    debugger;
+
     // get stats about the current file
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {
       const contents = fs.readFileSync(origFilePath, 'utf8');
-      
+      const result = contents.replace(/base-app/g, projectName)
+
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
-      fs.writeFileSync(writePath, contents, 'utf8');
+      fs.writeFileSync(writePath, result, 'utf8');
     } else if (stats.isDirectory()) {
       fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
       
       // recursive call
-      createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`);
+      createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`, projectName);
     }
   });
+}
+
+function addProjectName (projectName, fileContent) {
+
 }
