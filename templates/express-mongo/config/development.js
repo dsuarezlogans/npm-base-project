@@ -6,7 +6,7 @@ module.exports = {
     secret: 'something.super.secret',
   },
   db: 'mongodb://127.0.0.1:27017/db',
-  port: '3000',
+  port: Number(3000),
   twitter: {
     consumerKey: 'consumer Key',
     consumerSecret: 'consumer Secret',

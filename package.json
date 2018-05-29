@@ -7,6 +7,9 @@
     "test": "test",
     "debug": "node --inspect-brk=9229 index.js"
   },
+  "bin": {
+    "node-generate": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dsuarezlogans/npm-base-project.git"

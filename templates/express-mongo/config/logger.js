@@ -19,20 +19,13 @@ const logger = new winston.Logger({
       json: false,
       colorize: true,
     }),
-    new winston.transports.Console({
-      level: 'debug',
-      handleExceptions: true,
-      json: false,
-      colorize: true,
-    }),
   ],
   exitOnError: false,
 });
 
 module.exports = logger;
 module.exports.stream = {
-  write: (message, encoding) => {
-    logger.info(message);
-    logger.debug(encoding);
+  write: (message) => {
+    logger.warn(message);
   },
 };

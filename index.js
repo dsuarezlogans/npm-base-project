@@ -1,3 +1,5 @@
+#!/usr/bin/env/ node
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 
@@ -45,6 +47,8 @@ function createDirectoryContents (templatePath, newProjectPath, projectName) {
       const contents = fs.readFileSync(origFilePath, 'utf8');
       const result = contents.replace(/base-app/g, projectName)
 
+      if (file === '.npmignore') file = '.gitignore';
+
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, result, 'utf8');
     } else if (stats.isDirectory()) {
@@ -54,8 +58,4 @@ function createDirectoryContents (templatePath, newProjectPath, projectName) {
       createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`, projectName);
     }
   });
-}
-
-function addProjectName (projectName, fileContent) {
-
 }

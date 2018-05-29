@@ -32,8 +32,11 @@
   "homepage": "https://github.com/dsuarezlogans/node-base-app#readme",
   "dependencies": {
     "body-parser": "1.18.2",
+    "compression": "1.7.2",
     "cors": "2.8.4",
     "express": "4.16.3",
+    "helmet": "3.12.1",
+    "http-errors": "1.6.3",
     "mongoose": "5.0.17",
     "morgan": "1.9.0",
     "winston": "2.4.2"

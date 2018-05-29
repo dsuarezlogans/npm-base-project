@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const mongoose = require('mongoose');
-const winston = require('winston');
+const logger = require('./config/logger');
 
 const app = require('./src/app.js');
 const config = require('./config');
@@ -10,8 +10,8 @@ mongoose.Promise = global.Promise;
 
 mongoose
   .connect(config.db)
-  .then(() => winston.info('Conectado a MongoDB satisfatoriamente.'))
-  .then(() => app.listen(config.port, () => winston.info(`Servidor con entorno ${config.env} corriendo en http://localhost:${config.port}`)))
-  .catch(error => winston.error(`Error encontrado: ${error}`));
+  .then(() => logger.info('Mongo DB connection succesfull...'))
+  .then(() => app.listen(config.port, () => logger.info(`${config.env} server up and running on http://localhost:${config.port}`)))
+  .catch(error => logger.error(`Error: ${error}`));
 
 module.exports = { server: app };
