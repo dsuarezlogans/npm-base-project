@@ -1,6 +1,6 @@
-# Welcome to node-gen!
+# Welcome to node-temgen!
 
-This package has been made as a tool for generate a Rest Api application with Express.js, it is made as a boilerplate of initial setup for production, minimizing the effort of doing this time-consuming job.
+A node template generator for Rest Api application with Express.js, it is made as a boilerplate of initial setup for production, minimizing the effort of doing this time-consuming job.
 
 It comes loaded and setup with moongose as a ORM for MongoDb Databases, also have setup winston and morgan for handle logging, and a set of usefull dependecies that a web application in node should have.
 
