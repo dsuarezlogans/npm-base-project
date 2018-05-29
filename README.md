@@ -11,6 +11,7 @@ Also comes with mocha, chai, supertest and nyc setup , for testing and code cove
     $ npm install -g node-gen
     
 **Quick Start**
+
 To get the base project of your choice generated, go to your terminal an cd to your projects folder then simply run:
 
     $ node-gen
@@ -22,13 +23,13 @@ It will output:
 Use your arrows key to select up and down them input your project name like:
 
     Project name: my-awsome-app
-then cd to your `my-awsome-app` project folder and run:
+Then cd to your `my-awsome-app` project folder and run:
 
     $ npm install
-you can check if averything is correct by running `$ npm start` and visiting in your browser `http:localhost:3000` if every thing is Ok you will see:
+You can check if averything is correct by running `$ npm start` and visiting in your browser `http:localhost:3000` if every thing is Ok you will see:
 
     { message: 'Hello World!!' }
 
 And thats it, happy coding!!
-
+--------
 TODO: add a template with Sequalice ORM for support relational databases, a template with view engine with hbs and any other usefull tool that i dont know yet xD.
