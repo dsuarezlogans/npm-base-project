@@ -10,6 +10,9 @@
   "bin": {
     "node-generate": "./index.js"
   },
+  "engines": {
+    "node": ">=8.9.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dsuarezlogans/npm-base-project.git"
