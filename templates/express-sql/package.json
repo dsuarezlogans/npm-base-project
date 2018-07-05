@@ -1,7 +1,7 @@
 {
-  "name": "node-ci",
+  "name": "base-app",
   "version": "1.0.0",
-  "description": "A base web app template for production with express.js and mongodb following airbnb js style guide.",
+  "description": "A base web app template for production with express.js and sequelize following airbnb js style guide.",
   "engines": {
     "node": "8.11.3"
   },
@@ -14,22 +14,15 @@
     "local-test": "env-cmd --fallback .env.local mocha",
     "test-coverage": "nyc --reporter=text --reporter=html mocha --timeout=3000"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dsuarezlogans/node-node-ci.git"
-  },
   "keywords": [
     "Express",
+    "SQL",
     "Sequelize",
     "Production",
     "Airbnb"
   ],
-  "author": "Danny Suarez",
+  "author": "Your Name Here",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dsuarezlogans/node-node-ci/issues"
-  },
-  "homepage": "https://github.com/dsuarezlogans/node-node-ci#readme",
   "dependencies": {
     "body-parser": "1.18.2",
     "compression": "1.7.2",

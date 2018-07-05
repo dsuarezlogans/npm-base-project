@@ -8,7 +8,7 @@ winston.emitErrs = true;
 const winstonPapertrailTransport = new winston.transports.Papertrail({
   host: process.env.LOG_HOST,
   port: process.env.LOG_PORT,
-  program: 'node-ci',
+  program: 'base-app',
   inlineMeta: true,
   maximumAttempts: 2,
   attemptsBeforeDecay: 1,

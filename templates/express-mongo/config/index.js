@@ -1,5 +1,5 @@
 module.exports = {
-  app: 'node-ci',
+  app: 'base-app',
   env: process.env.NODE_ENV,
   session: {
     key: process.env.SESSION_KEY,
