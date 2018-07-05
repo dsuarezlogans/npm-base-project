@@ -1,6 +1,6 @@
 {
   "name": "node-temgen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Simple generator of base proyects as a start point for production apps",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "npm",
     "express",
     "mongoose",
+    "sequelize",
     "base",
     "production",
     "starter",
