@@ -25,15 +25,15 @@ const QUESTIONS = [
 ];
 
 inquirer.prompt(QUESTIONS)
-.then(answers => {
-    const projectChoice = answers['base-project-choice'];
-    const projectName = answers['project-name'];
-    const templatePath = `${__dirname}/templates/${projectChoice}`;
+  .then(answers => {
+      const projectChoice = answers['base-project-choice'];
+      const projectName = answers['project-name'];
+      const templatePath = `${__dirname}/templates/${projectChoice}`;
 
-    fs.mkdirSync(`${CURR_DIR}/${projectName}`);
+      fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
-    createDirectoryContents(templatePath, projectName, projectName);
-  });
+      createDirectoryContents(templatePath, projectName, projectName);
+    });
 
 function createDirectoryContents (templatePath, newProjectPath, projectName) {
   const filesToCreate = fs.readdirSync(templatePath);
