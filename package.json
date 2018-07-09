@@ -1,6 +1,6 @@
 {
   "name": "node-temgen",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Simple generator of base proyects as a start point for production apps",
   "main": "index.js",
   "scripts": {
