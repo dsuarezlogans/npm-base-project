@@ -32,6 +32,8 @@ You can check if averything is correct by running `npm start` and visiting in yo
 
     { message: 'Hello World!!' }
 
+Then you need to create a .env.local and add your enviroment variables as you can see in .env file intructions, for papertrail, you can create an account at `https://papertrailapp.com/login` and configure it in your project so you can have a free log service, pass in host and port to your .env or .env.local file and launch your app to any cloud service.
+
 And thats it, happy coding!!
 
 ------
