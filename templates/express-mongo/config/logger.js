@@ -1,65 +1,70 @@
-/* eslint-disable no-unused-expressions */
+const moment = require('moment');
+const { createLogger, transports, format } = require('winston');
 
-const winston = require('winston');
-require('winston-papertrail').Papertrail;
+const { app } = require('./index');
 
-winston.emitErrs = true;
+const { combine, colorize, label, printf, timestamp } = format;
 
-const winstonPapertrailTransport = new winston.transports.Papertrail({
-  host: process.env.LOG_HOST,
-  port: process.env.LOG_PORT,
-  program: 'base-app',
-  inlineMeta: true,
-  maximumAttempts: 2,
-  attemptsBeforeDecay: 1,
-  logFormat: (level, message) => `<<< ${level} >>> ${message}`,
-  colorize: true
+const logFormat = printf(
+  info => `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`
+);
+
+const appendTimestamp = format((info, opts) => {
+  if (opts.tz) {
+    info.timestamp = moment()
+      .tz(opts.tz)
+      .format('YYYY-MM-DDTHH:mm:ss.SSSS');
+  }
+  return info;
 });
 
-const fileTransport = new winston.transports.File({
-  filename: './logs/all-logs.log',
-  handleExceptions: true,
-  json: true,
-  maxsize: 5242880, //  5MB
-  maxFiles: 5,
-  colorize: false
+const transportsSetup = {
+  console: new transports.Console({
+    handleExceptions: true,
+    json: false,
+    format: combine(
+      colorize(),
+      label({ label: app }),
+      appendTimestamp({ tz: 'America/Lima' }),
+      logFormat
+    ),
+    colorize: true,
+  }),
+  file: new transports.File({
+    filename: './logs/all-logs.log',
+    handleExceptions: true,
+    json: true,
+    format: combine(
+      timestamp({
+        format: 'YYYY-MM-DDThh:mm:ssAZZ',
+      }),
+      format.json()
+    ),
+    maxsize: 5242880, //  5MB
+    maxFiles: 5,
+    colorize: false,
+  }),
+};
+
+const logger = createLogger({
+  transports: [transportsSetup.file, transportsSetup.console],
+  exitOnError: false,
 });
 
-const consoleTransport = new winston.transports.Console({
-  handleExceptions: true,
-  json: false,
-  colorize: true
-});
-
-const logger = new winston.Logger({
-  transports: [fileTransport, consoleTransport, winstonPapertrailTransport],
-  exitOnError: false
-});
-
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+if (
+  process.env.NODE_ENV === 'production' ||
+  process.env.NODE_ENV === 'staging'
+) {
   logger.transports.console.level = 'info';
-  logger.transports.file.level = 'info';
-  logger.transports.Papertrail.level = 'info';
+  logger.transports.file.level = 'error';
 }
 
 if (process.env.NODE_ENV === 'development') {
   logger.transports.console.level = 'debug';
   logger.transports.file.level = 'debug';
-  logger.transports.Papertrail.level = 'debug';
-}
-
-if (process.env.NODE_ENV === 'local') {
-  logger.transports.console.level = 'debug';
-  logger.transports.file.level = 'debug';
-  logger.remove(logger.transports.Papertrail);
-  logger.debug('Logger removed Papertrail');
 }
 
 module.exports = logger;
 module.exports.stream = {
-  write: message => logger.info(message)
+  write: message => logger.info(message),
 };
-
-winstonPapertrailTransport.on('error', err => logger.error(err));
-
-winstonPapertrailTransport.on('connect', message => logger.info(message));

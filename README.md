@@ -8,33 +8,50 @@ Also comes with mocha, chai, supertest and nyc(istanbul) setup, for testing and 
 
 ## Installation
 
-    npm install -g node-temgen
+```sh
+npm install -g node-temgen
+```
 
 ## Quick Start
 
 To get the base project of your choice generated, go to your terminal an cd to your projects folder then simply run:
 
-    node-temgen
+```sh
+node-temgen
+```
 
 It will output:
 
-    What base project template would you like to generate?
-        >express-mongo
-         express-sql
+```sh
+What base project template would you like to generate?
+    >express-mongo
+     express-sql
+```
 
 Use your arrows key to select up and down them input your project name like:
 
-    Project name: my-awsome-app
+```sh
+Project name: my-awsome-app
+```
+
 Then cd to your `my-awsome-app` project folder and run:
 
-    npm install
+```sh
+npm install
+```
+
 You can check if averything is correct by running `npm start` and visiting in your browser `http://localhost:3000/hello` if every thing is Ok you will see:
 
-    { message: 'Hello World!!' }
+```js
+{
+  message: 'Hello World!!';
+}
+```
 
-Then you need to create a .env.local and add your enviroment variables as you can see in .env file intructions, for papertrail, you can create an account at `https://papertrailapp.com/login` and configure it in your project so you can have a free log service, pass in host and port to your .env or .env.local file and launch your app to any cloud service.
+Then you need to create or edit `.env` and add your enviroment variables as you can see in `.env` file intructions.
 
 And thats it, happy coding!!
 
-------
+---
+
 **TODO**: add a template with view engine with hbs and any other usefull tool that i dont know yet xD.

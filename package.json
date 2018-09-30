@@ -35,6 +35,8 @@
   },
   "homepage": "https://github.com/dsuarezlogans/npm-base-project#readme",
   "dependencies": {
-    "inquirer": "5.2.0"
+    "fs-extra": "7.0.0",
+    "inquirer": "5.2.0",
+    "moment": "2.22.2"
   }
 }
